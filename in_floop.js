@@ -52,7 +52,7 @@ var in_floop = async (code, input, logging = 0) => {
     
     var stop = 0;
     
-    logging.stop = () => (stop = 1);
+    if(logging) logging.stop = () => (stop = 1);
     
     var i, d;
     
@@ -103,7 +103,7 @@ var in_floop = async (code, input, logging = 0) => {
                 break;
             case "+":
                 if (focus_stor) {
-                    stors[focus] = (focus in stors) ? focus[stors] + 1n : 1n;
+                    stors[focus] = (focus in stors) ? stors[focus] + 1n : 1n;
                     
                     break;
                 }
@@ -113,7 +113,7 @@ var in_floop = async (code, input, logging = 0) => {
                 break;
             case "-":
                 if (focus_stor) {
-                    stors[focus] = (focus in stors) ? focus[stors] - 1n : -1n;
+                    stors[focus] = (focus in stors) ? stors[focus] - 1n : -1n;
                     
                     break;
                 }
@@ -122,7 +122,7 @@ var in_floop = async (code, input, logging = 0) => {
                 
                 break;
             case "@":
-                focus = focus_stor ? ((focus in stors) ? focus[stors] : 0n) : vars[focus];
+                focus = focus_stor ? ((focus in stors) ? stors[focus] : 0n) : vars[focus];
                 focus_stor = 1;
 
                 break;
